@@ -18,8 +18,7 @@ public class InternateBankingSystem
            new Thread(new WithdrawThread(accountObj,130)).start();
            new Thread(new WithdrawThread(accountObj,150)).start();
            new Thread(new WithdrawThread(accountObj,120)).start();
-
-    }
+  }
 }
 
 
@@ -33,7 +32,7 @@ public class Account
       {
           this.balance = balance;
       }
-// if the keyword ‘synchronized’ is removed, the outcome will be  unpredictable
+    // if the keyword ‘synchronized’ is removed, the outcome will be  unpredictable
 
     public synchronized void deposit(double amount) 
     {
@@ -41,10 +40,10 @@ public class Account
         {
           throw new IllegalArgumentException("Can’t deposit.");
         }
-      this. balance += amount;
-      System.out.println(" Deposit " + amount + " in thread  " + Thread.currentThread().getId() + ", balance is " +balance);
+         this. balance += amount;
+         System.out.println(" Deposit " + amount + " in thread  " + Thread.currentThread().getId() + ", balance is "             +balance);
     }
-// if the keyword ‘synchronized’ is removed, the outcome will be  unpredictable
+    // if the keyword ‘synchronized’ is removed, the outcome will be  unpredictable
     public synchronized void withdraw(double amount) 
     {
       if (amount < 0 || amount > this.balance) 
@@ -52,7 +51,7 @@ public class Account
            throw new IllegalArgumentException("Can’t withdraw.");
         }
           this.balance -= amount;
-          System.out.println(" Withdraw  " + amount +" in thread " + Thread.currentThread().getId() + ", balance is "+balance);
+          System.out.println(" Withdraw  " + amount +" in thread " + Thread.currentThread().getId() + ", balance is "             +balance);
     }
 }//End of Account class
 
