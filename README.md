@@ -5,29 +5,30 @@ An Online Banking System created using multithreading where multiple transaction
 
 InternateBankingSystem Class
 ============================
-package internatebankingsystem;
+  package internatebankingsystem;
 
-  public class InternateBankingSystem
-   {
-      public static void main(String[] args) 
-      {
-          Account accountObj; 
-          accountObject = new Account(100);
-             new Thread(new DepositThread(accountObj,130)).start();
-             new Thread(new DepositThread(accountObj,210)).start();
-             new Thread(new DepositThread(accountObj,310)).start();
-             new Thread(new WithdrawThread(accountObj,130)).start();
-             new Thread(new WithdrawThread(accountObj,150)).start();
-             new Thread(new WithdrawThread(accountObj,120)).start();
-      }
-  }
+    public class InternateBankingSystem
+     {
+        public static void main(String[] args) 
+        {
+            Account accountObj; 
+            accountObject = new Account(100);
+               new Thread(new DepositThread(accountObj,130)).start();
+               new Thread(new DepositThread(accountObj,210)).start();
+               new Thread(new DepositThread(accountObj,310)).start();
+               new Thread(new WithdrawThread(accountObj,130)).start();
+               new Thread(new WithdrawThread(accountObj,150)).start();
+               new Thread(new WithdrawThread(accountObj,120)).start();
+        }
+    }
 
 
 Account Class
 ==============
 package internatebankingsystem;
+
      public class Account 
-     {
+      {
          private double balance = 0;
          public Account(double balance)
            {
@@ -54,31 +55,33 @@ package internatebankingsystem;
                this.balance -= amount;
                System.out.println(" Withdraw  " + amount +" in thread " + Thread.currentThread().getId() + ", balance is                "+balance);
          }
-     }//End of Account class
+      }//End of Account class
 
 
 DepositeThread Class
 ====================
 package internatebankingsystem;
-     public class DepositThread implements Runnable 
-     {
-         private Account account;
-         private double amount;
-         public DepositThread(Account account, double amount) 
-         {
-             this.account = account;
-             this.amount = amount;
-         }
-         public void run()
-         {
-         //make a deposit
-              account.deposit(amount);
-         }
-     }//End of DepositeThread Class
+
+       public class DepositThread implements Runnable 
+       {
+           private Account account;
+           private double amount;
+           public DepositThread(Account account, double amount) 
+           {
+               this.account = account;
+               this.amount = amount;
+           }
+           public void run()
+           {
+           //make a deposit
+                account.deposit(amount);
+           }
+       }//End of DepositeThread Class
 
 WithdrawThread Class
 ====================
 package internatebankingsystem;
+
      public class WithdrawThread implements Runnable 
      {
          private Account account;
